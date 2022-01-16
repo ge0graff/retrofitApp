@@ -1,7 +1,7 @@
 package com.example.kochetkov.di
 
 import com.example.kochetkov.data.Services.ImageApiService
-import com.example.kochetkov.data.repository.Repository
+import com.example.kochetkov.data.repository.ImageRepositoryImpl
 import org.koin.dsl.module
 
 val repositoryModule = module {
@@ -10,6 +10,6 @@ val repositoryModule = module {
 
 }
 
-    fun provideRepository(api: ImageApiService): Repository {
-    return Repository(api)
+    fun provideRepository(api: ImageApiService): ImageRepositoryImpl {
+        return ImageRepositoryImpl(api)
     }

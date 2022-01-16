@@ -1,8 +1,8 @@
-package com.example.kochetkov.domein
+package com.example.kochetkov.domain
 
 import com.example.kochetkov.data.models.Images
 import retrofit2.Response
 
-interface Repository {
+interface ImageRepository {
     suspend fun getImages(): Response<Images>
 }

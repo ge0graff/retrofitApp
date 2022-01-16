@@ -10,7 +10,8 @@ import com.example.kochetkov.R
 import com.example.kochetkov.data.models.Images
 import com.example.kochetkov.databinding.ItemLayoutBinding
 
-class MainAdapter: RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
+class MainAdapter(private val imageForwardClick: ImageForwardClick) :
+    RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
     private var listImage = Images()
 
@@ -27,22 +28,23 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
         return listImage.size
     }
 
-    class MainViewHolder(view: View): RecyclerView.ViewHolder(view){
+    inner class MainViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = ItemLayoutBinding.bind(view)
 
-        fun bind(images: String) = with(binding){
-
-
-
+        fun bind(imageUrl: String) = with(binding) {
             Glide.with(itemImView.context)
-                .load(images)
+                .load(imageUrl)
                 .centerCrop()
                 .into(itemImView)
+
+            itemImView.setOnClickListener {
+                imageForwardClick.onClick(imageUrl)
+            }
         }
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setList(list:  Images){
+    fun setList(list: Images) {
         listImage = list
         notifyDataSetChanged()
     }
