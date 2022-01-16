@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.kochetkov.R
-import com.example.kochetkov.data.models.ImageItem
+import com.example.kochetkov.data.models.Images
 import com.example.kochetkov.databinding.ItemLayoutBinding
 
 class MainAdapter: RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
-    private var listImage = emptyList<ImageItem>()
+    private var listImage = Images()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_layout, parent, false)
@@ -30,17 +30,19 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
     class MainViewHolder(view: View): RecyclerView.ViewHolder(view){
         private val binding = ItemLayoutBinding.bind(view)
 
-        fun bind(imageItem: ImageItem) = with(binding){
+        fun bind(images: String) = with(binding){
+
+
+
             Glide.with(itemImView.context)
-                .load("http://fototips.ru/wp-content/uploads/2011/12/landscape_03.jpg")
+                .load(images)
                 .centerCrop()
                 .into(itemImView)
-
         }
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setList(list: List<ImageItem>){
+    fun setList(list:  Images){
         listImage = list
         notifyDataSetChanged()
     }

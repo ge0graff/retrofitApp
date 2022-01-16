@@ -16,7 +16,7 @@ class MainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     private val binding get () = _binding!!
 
-    private val viewModel: MainFragmentViewModel by viewModel<MainFragmentViewModel>()
+    private val viewModel by viewModel<MainFragmentViewModel>()
 
     private val adapter = MainAdapter()
 

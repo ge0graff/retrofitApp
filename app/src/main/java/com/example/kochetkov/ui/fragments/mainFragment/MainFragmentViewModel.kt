@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 import retrofit2.Retrofit
 
-class MainFragmentViewModel constructor(val repository: Repository): ViewModel() {
+class MainFragmentViewModel constructor(private val repository: Repository): ViewModel() {
 
 
     val imageList: MutableLiveData<Response<Images>> = MutableLiveData()
